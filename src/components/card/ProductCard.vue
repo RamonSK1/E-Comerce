@@ -18,7 +18,7 @@ function handleAdd() {
 </script>
 
 <template>
-  <article>
+  <!-- <article class="w-[200px]">
     <h2>{{ product.name }}</h2>
     <p>Categoria: {{ product.category.name }}</p>
     <p>Descrição: {{ product.description }}</p>
@@ -27,7 +27,26 @@ function handleAdd() {
     <button @click="handleAdd">
       Adicionar
     </button>
-  </article>
+  </article> -->
+  <Card
+  :style="{width:'100%', minWidth:'200px', maxWidth:'220px'}">
+    <template #header>
+      <img :src="'https://picsum.photos/200'" class="w-full object-cover"/>
+    </template>
+    <template #title>
+      <h1>{{ product.name }}</h1>
+    </template>
+    <template #content>
+      <p>Categoria: {{ product.category.name }}</p>
+    <p>Descrição: {{ product.description }}</p>
+    <p>R$: {{ product.price.toFixed(2).replace('.', ',') }}</p>
+    </template>
+    <template #footer>
+      <div class="flex flex-row-reverse">
+        <Button @click="handleAdd">Adicionar</Button>
+      </div>
+    </template>
+  </Card>
 </template>
 
 <style scoped>
