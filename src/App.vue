@@ -5,6 +5,7 @@ import CardItem from './components/card/CardItem.vue'
 import { Category } from './model/category.model'
 import { Product } from './model/product.model'
 import { Cart } from './model/cart.model'
+import { buffer } from 'stream/consumers'
 
 export default defineComponent({
   components: {
@@ -35,6 +36,9 @@ export default defineComponent({
     },
     decrementFromCart(product: Product){
       this.cart.decrementItem(product)
+    },
+    toggleDarkMode(){
+      document.documentElement.classList.toggle('dark')
     }
   }
 })
@@ -43,7 +47,14 @@ export default defineComponent({
 </script>
 
 <template>
+  <ConfirmDialog /> 
   <main class="p-6">
+    <!--bota dark-->
+    <div class="flex justify-end mb-4">
+      <Button @click="toggleDarkMode" icon="pi pi-moon" label="Alterar o tema"></Button>
+
+    </div>
+
     <h1 class="text-2xl font-bold mb-4">Produtos</h1>
     <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ">
       <div v-for="product in products">

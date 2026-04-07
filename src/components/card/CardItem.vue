@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import type { listProduct } from '@/model/cart.model'
 import type { Product } from '@/model/product.model'
+import { useConfirm } from 'primevue';
+
+const confirm = useConfirm()
+
+
 
 // props
 const props = defineProps<{
@@ -30,7 +35,14 @@ function handleQuantityChange(newQty: number | null) {
 }
 
 function handleRemove() {
-  emit('removeItem', props.item.product)
+  confirm.require({
+    message: 'Você realmente quer remover o item?',
+    header: 'Confirma',
+    icon: 'pi pi-exclamation-triangle',
+    acceptLabel: 'Sim',
+    rejectLabel: 'Não',
+    accept: () => emit('removeItem', props.item.product)
+  })
 }
 
 // util
