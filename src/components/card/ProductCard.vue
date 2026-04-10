@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Product } from '@/model/product.model';
+import type { Product } from '@/model/product.model'
 
 // define a prop tipada
 const props = defineProps<{
@@ -28,22 +28,24 @@ function handleAdd() {
       Adicionar
     </button>
   </article> -->
-  <Card
-  :style="{width:'100%', minWidth:'200px', maxWidth:'220px'}">
+  <Card :style="{ width: '100%', minWidth: '200px', maxWidth: '220px' }">
     <template #header>
-      <img :src="'https://picsum.photos/200'" class="w-full object-cover"/>
+      <img :src="'https://picsum.photos/200'" class="w-full object-cover" />
     </template>
     <template #title>
       <h1>{{ product.name }}</h1>
     </template>
     <template #content>
       <p>Categoria: {{ product.category.name }}</p>
-    <p>Descrição: {{ product.description }}</p>
-    <p>R$: {{ product.price.toFixed(2).replace('.', ',') }}</p>
+      <p>Descrição: {{ product.description }}</p>
+      <p>R$: {{ product.price.toFixed(2).replace('.', ',') }}</p>
     </template>
     <template #footer>
-      <div class="flex flex-row-reverse">
-        <Button @click="handleAdd">Adicionar</Button>
+      <div class="flex justify-between items-center">
+        <router-link :to="`/product/${product.id}`">
+          <Button severity="secondary" label="Detalhes" icon="pi pi-eye"></Button>
+        </router-link>
+        <Button @click="handleAdd" label="Adicionar" icon="pi pi-cart-plus">Adicionar</Button>
       </div>
     </template>
   </Card>
