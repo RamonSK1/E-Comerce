@@ -7,13 +7,16 @@ import Card from 'primevue/card'
 import DataView from 'primevue/dataview'
 import ConfirmDialog from 'primevue/confirmdialog'
 import ConfirmationService from 'primevue/confirmationservice'
-import { PanelMenu } from 'primevue'
-import { option } from '@primeuix/themes/aura/autocomplete'
-import { DataTable } from 'primevue'
-import { Column } from 'primevue'
-import { Breadcrumb } from 'primevue'
-
-import { Menubar } from 'primevue'
+import InputText from 'primevue/inputtext'
+import Password from 'primevue/password'
+import InputNumber from 'primevue/inputnumber'
+import PanelMenu from 'primevue/panelmenu'
+import DataTable from 'primevue/datatable'
+import Column from 'primevue/column'
+import Breadcrumb from 'primevue/breadcrumb'
+import Menubar from 'primevue/menubar'
+import { Toast } from 'primevue'
+import { ToastService } from 'primevue'
 
 export function setPrimeVue(app: App): void {
   app.use(PrimeVue, {
@@ -25,6 +28,8 @@ export function setPrimeVue(app: App): void {
     },
   })
   app.use(ConfirmationService)
+  app.use(ToastService)
+  app.component('Toast', Toast)
   app.component('Button', Button)
   app.component('Card', Card)
   app.component('DataView', DataView)
@@ -34,4 +39,7 @@ export function setPrimeVue(app: App): void {
   app.component('DataTable', DataTable)
   app.component('Column', Column)
   app.component('Breadcrumb', Breadcrumb)
+  app.component('InputText', InputText)
+  app.component('Password', Password)
+  app.component('InputNumber', InputNumber)
 }

@@ -29,7 +29,7 @@ export default defineComponent({
         <template #body="{ data }"> R$ {{ data.price.toFixed(2).replace('.', ',') }} </template>
       </Column>
       <Column field="category.name" header="Categoria"></Column>
-      <Column field="description" header="Descrição"></Column>
+      <Column field="description" header="Descrição">n</Column>
     </DataTable>
   </div>
 </template>

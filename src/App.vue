@@ -35,6 +35,7 @@ export default defineComponent({
     },
     logout() {
       this.authStore.logout()
+      this.router.push('/login')
     },
   },
 })
@@ -42,6 +43,7 @@ export default defineComponent({
 
 <template>
   <ConfirmDialog />
+  <Toast />
 
   <!-- MeNUBAR -->
 
@@ -56,17 +58,14 @@ export default defineComponent({
         </span>
         <Button
           v-if="!authStore.isAuthenticated"
-          @click="loginCustomer"
-          label="Login Customer"
-          severity="secondary"
-          size="small"
+          label="Login"
+          @click="router.push('/login')"
         ></Button>
         <Button
           v-if="!authStore.isAuthenticated"
-          @click="loginAdmin"
-          label="Login Admin"
+          label="Registrar"
           severity="secondary"
-          size="small"
+          @click="router.push('/register')"
         ></Button>
         <Button
           v-if="authStore.isAuthenticated"
