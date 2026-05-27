@@ -1,14 +1,14 @@
-import {size, z} from 'zod'
+import { z } from 'zod'
 
 export const categoryQueryPaginationSchema = z.object({
-    page: z.coerce.number().positive(),
-    size: z.coerce.number().positive(),
+  page: z.coerce.number().positive(),
+  size: z.coerce.number().positive(),
 })
 
 export const categoryParamsSchema = z.object({
-    id: z.uuid(),
+  id: z.string().uuid(),
 })
 
 export const createCategorySchema = z.object({
-    name: z.string().min(3),
+  name: z.string().min(3),
 })
